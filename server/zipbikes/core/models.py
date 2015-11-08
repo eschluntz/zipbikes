@@ -16,8 +16,16 @@ class Bike(models.Model):
     picture = models.ImageField(null=True, blank=True)
     
     # changing
-    broken = models.BooleanField(default=False)
-    in_use = models.BooleanField(default=False)
+    STATUS_CHOICES = (
+        ('A', 'Available'),
+        ('B', 'Broken'),
+        ('M', 'Missing'),
+        ('U', 'Used')
+    )
+    status = models.CharField(
+        max_length=1, 
+        choices=STATUS_CHOICES,
+        default='A')
     lat = models.FloatField()
     lon = models.FloatField()
 
