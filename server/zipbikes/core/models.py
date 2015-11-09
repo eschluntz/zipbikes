@@ -13,14 +13,15 @@ class Bike(models.Model):
     owner = models.ForeignKey(User, related_name="bikes")
     price = models.FloatField(default=2)
     rating = models.FloatField(default=3.5)
-    picture = models.ImageField(null=True, blank=True)
+    #picture = models.ImageField(null=True, blank=True)
+    secret = models.CharField(max_length=100, null=True, blank=True)
     
     # changing
     STATUS_CHOICES = (
         ('A', 'Available'),
         ('B', 'Broken'),
         ('M', 'Missing'),
-        ('U', 'Used')
+        ('R', 'Rented')
     )
     status = models.CharField(
         max_length=1, 

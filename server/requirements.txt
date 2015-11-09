@@ -1,3 +1,2 @@
 django
 south
-Pillow==2.6.1

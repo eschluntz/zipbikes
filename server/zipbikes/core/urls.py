@@ -6,5 +6,6 @@ from . import views
 urlpatterns = patterns('',
     url(r'^map/$', views.map),
     url(r'^ask/$', views.ask),
-    url(r'^action/$', views.action),
+    url(r'^lock/$', views.lock),
+    url(r'^unlock/$', views.unlock),
 )
