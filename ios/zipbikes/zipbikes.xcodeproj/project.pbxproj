@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */; };
+		80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4631BF2DC23009B39E4 /* ViewController.swift */; };
+		80CBA4671BF2DC23009B39E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80CBA4651BF2DC23009B39E4 /* Main.storyboard */; };
+		80CBA4691BF2DC23009B39E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80CBA4681BF2DC23009B39E4 /* Assets.xcassets */; };
+		80CBA46C1BF2DC23009B39E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80CBA46A1BF2DC23009B39E4 /* LaunchScreen.storyboard */; };
+		80CBA4771BF2DC23009B39E4 /* zipbikesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4761BF2DC23009B39E4 /* zipbikesTests.swift */; };
+		80CBA4821BF2DC23009B39E4 /* zipbikesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4811BF2DC23009B39E4 /* zipbikesUITests.swift */; };
+		80CBA4901BF2DCAF009B39E4 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA48F1BF2DCAF009B39E4 /* Bike.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80CBA4731BF2DC23009B39E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80CBA4561BF2DC23009B39E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80CBA45D1BF2DC23009B39E4;
+			remoteInfo = zipbikes;
+		};
+		80CBA47E1BF2DC23009B39E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80CBA4561BF2DC23009B39E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80CBA45D1BF2DC23009B39E4;
+			remoteInfo = zipbikes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		80CBA45E1BF2DC23009B39E4 /* zipbikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zipbikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80CBA4631BF2DC23009B39E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80CBA4661BF2DC23009B39E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80CBA4681BF2DC23009B39E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80CBA46B1BF2DC23009B39E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		80CBA46D1BF2DC23009B39E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80CBA4721BF2DC23009B39E4 /* zipbikesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zipbikesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CBA4761BF2DC23009B39E4 /* zipbikesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zipbikesTests.swift; sourceTree = "<group>"; };
+		80CBA4781BF2DC23009B39E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80CBA47D1BF2DC23009B39E4 /* zipbikesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zipbikesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CBA4811BF2DC23009B39E4 /* zipbikesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zipbikesUITests.swift; sourceTree = "<group>"; };
+		80CBA4831BF2DC23009B39E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80CBA48F1BF2DCAF009B39E4 /* Bike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80CBA45B1BF2DC23009B39E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA46F1BF2DC23009B39E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA47A1BF2DC23009B39E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80CBA4551BF2DC23009B39E4 = {
+			isa = PBXGroup;
+			children = (
+				80CBA4601BF2DC23009B39E4 /* zipbikes */,
+				80CBA4751BF2DC23009B39E4 /* zipbikesTests */,
+				80CBA4801BF2DC23009B39E4 /* zipbikesUITests */,
+				80CBA45F1BF2DC23009B39E4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		80CBA45F1BF2DC23009B39E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80CBA45E1BF2DC23009B39E4 /* zipbikes.app */,
+				80CBA4721BF2DC23009B39E4 /* zipbikesTests.xctest */,
+				80CBA47D1BF2DC23009B39E4 /* zipbikesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80CBA4601BF2DC23009B39E4 /* zipbikes */ = {
+			isa = PBXGroup;
+			children = (
+				80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */,
+				80CBA4631BF2DC23009B39E4 /* ViewController.swift */,
+				80CBA48F1BF2DCAF009B39E4 /* Bike.swift */,
+				80CBA4651BF2DC23009B39E4 /* Main.storyboard */,
+				80CBA4681BF2DC23009B39E4 /* Assets.xcassets */,
+				80CBA46A1BF2DC23009B39E4 /* LaunchScreen.storyboard */,
+				80CBA46D1BF2DC23009B39E4 /* Info.plist */,
+			);
+			path = zipbikes;
+			sourceTree = "<group>";
+		};
+		80CBA4751BF2DC23009B39E4 /* zipbikesTests */ = {
+			isa = PBXGroup;
+			children = (
+				80CBA4761BF2DC23009B39E4 /* zipbikesTests.swift */,
+				80CBA4781BF2DC23009B39E4 /* Info.plist */,
+			);
+			path = zipbikesTests;
+			sourceTree = "<group>";
+		};
+		80CBA4801BF2DC23009B39E4 /* zipbikesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				80CBA4811BF2DC23009B39E4 /* zipbikesUITests.swift */,
+				80CBA4831BF2DC23009B39E4 /* Info.plist */,
+			);
+			path = zipbikesUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80CBA45D1BF2DC23009B39E4 /* zipbikes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80CBA4861BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikes" */;
+			buildPhases = (
+				80CBA45A1BF2DC23009B39E4 /* Sources */,
+				80CBA45B1BF2DC23009B39E4 /* Frameworks */,
+				80CBA45C1BF2DC23009B39E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zipbikes;
+			productName = zipbikes;
+			productReference = 80CBA45E1BF2DC23009B39E4 /* zipbikes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		80CBA4711BF2DC23009B39E4 /* zipbikesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80CBA4891BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesTests" */;
+			buildPhases = (
+				80CBA46E1BF2DC23009B39E4 /* Sources */,
+				80CBA46F1BF2DC23009B39E4 /* Frameworks */,
+				80CBA4701BF2DC23009B39E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80CBA4741BF2DC23009B39E4 /* PBXTargetDependency */,
+			);
+			name = zipbikesTests;
+			productName = zipbikesTests;
+			productReference = 80CBA4721BF2DC23009B39E4 /* zipbikesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		80CBA47C1BF2DC23009B39E4 /* zipbikesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80CBA48C1BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesUITests" */;
+			buildPhases = (
+				80CBA4791BF2DC23009B39E4 /* Sources */,
+				80CBA47A1BF2DC23009B39E4 /* Frameworks */,
+				80CBA47B1BF2DC23009B39E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80CBA47F1BF2DC23009B39E4 /* PBXTargetDependency */,
+			);
+			name = zipbikesUITests;
+			productName = zipbikesUITests;
+			productReference = 80CBA47D1BF2DC23009B39E4 /* zipbikesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80CBA4561BF2DC23009B39E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Devvret Rishi";
+				TargetAttributes = {
+					80CBA45D1BF2DC23009B39E4 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					80CBA4711BF2DC23009B39E4 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 80CBA45D1BF2DC23009B39E4;
+					};
+					80CBA47C1BF2DC23009B39E4 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 80CBA45D1BF2DC23009B39E4;
+					};
+				};
+			};
+			buildConfigurationList = 80CBA4591BF2DC23009B39E4 /* Build configuration list for PBXProject "zipbikes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 80CBA4551BF2DC23009B39E4;
+			productRefGroup = 80CBA45F1BF2DC23009B39E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80CBA45D1BF2DC23009B39E4 /* zipbikes */,
+				80CBA4711BF2DC23009B39E4 /* zipbikesTests */,
+				80CBA47C1BF2DC23009B39E4 /* zipbikesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80CBA45C1BF2DC23009B39E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80CBA46C1BF2DC23009B39E4 /* LaunchScreen.storyboard in Resources */,
+				80CBA4691BF2DC23009B39E4 /* Assets.xcassets in Resources */,
+				80CBA4671BF2DC23009B39E4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA4701BF2DC23009B39E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA47B1BF2DC23009B39E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80CBA45A1BF2DC23009B39E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */,
+				80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */,
+				80CBA4901BF2DCAF009B39E4 /* Bike.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA46E1BF2DC23009B39E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80CBA4771BF2DC23009B39E4 /* zipbikesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80CBA4791BF2DC23009B39E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80CBA4821BF2DC23009B39E4 /* zipbikesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80CBA4741BF2DC23009B39E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80CBA45D1BF2DC23009B39E4 /* zipbikes */;
+			targetProxy = 80CBA4731BF2DC23009B39E4 /* PBXContainerItemProxy */;
+		};
+		80CBA47F1BF2DC23009B39E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80CBA45D1BF2DC23009B39E4 /* zipbikes */;
+			targetProxy = 80CBA47E1BF2DC23009B39E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80CBA4651BF2DC23009B39E4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80CBA4661BF2DC23009B39E4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		80CBA46A1BF2DC23009B39E4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80CBA46B1BF2DC23009B39E4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80CBA4841BF2DC23009B39E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		80CBA4851BF2DC23009B39E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80CBA4871BF2DC23009B39E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = zipbikes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		80CBA4881BF2DC23009B39E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = zipbikes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		80CBA48A1BF2DC23009B39E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = zipbikesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zipbikes.app/zipbikes";
+			};
+			name = Debug;
+		};
+		80CBA48B1BF2DC23009B39E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = zipbikesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zipbikes.app/zipbikes";
+			};
+			name = Release;
+		};
+		80CBA48D1BF2DC23009B39E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = zipbikesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = zipbikes;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		80CBA48E1BF2DC23009B39E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = zipbikesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zipbikesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = zipbikes;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80CBA4591BF2DC23009B39E4 /* Build configuration list for PBXProject "zipbikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80CBA4841BF2DC23009B39E4 /* Debug */,
+				80CBA4851BF2DC23009B39E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80CBA4861BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80CBA4871BF2DC23009B39E4 /* Debug */,
+				80CBA4881BF2DC23009B39E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		80CBA4891BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80CBA48A1BF2DC23009B39E4 /* Debug */,
+				80CBA48B1BF2DC23009B39E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		80CBA48C1BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80CBA48D1BF2DC23009B39E4 /* Debug */,
+				80CBA48E1BF2DC23009B39E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80CBA4561BF2DC23009B39E4 /* Project object */;
+}

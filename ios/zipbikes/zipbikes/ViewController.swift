@@ -11,10 +11,11 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
-    @IBOutlet weak var mapView: MKMapView!
     
+    
+    @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    
     
     
     override func viewDidLoad() {
@@ -27,9 +28,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.showsUserLocation = true
         mapView.delegate = self
         
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,7 +50,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         var infoStr = "Bike 1" + "\n" + "Rating : " + String(rating) + " out of 5" + "\n" + "Price per day $" + String(price)
         
         let b1 = Bike(title: "Bike 1", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude + 0.005, longitude: location!.coordinate.longitude+0.01), info: infoStr, price: price, rating: rating )
-//        mapView.addAnnotation(b1)
+        //        mapView.addAnnotation(b1)
         
         let b2 = Bike(title: "Bike 2", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude - 0.008, longitude: location!.coordinate.longitude - 0.015), info: infoStr, price: price, rating: rating)
         mapView.addAnnotations([b1, b2])
@@ -74,7 +75,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
             return annotationView
         }
-    
+        
         return nil
     }
     
@@ -88,7 +89,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
     }
-
-
+    
+    
 }
 
