@@ -107,7 +107,7 @@ STATIC_URL = '/static/'
 # production settings ####################################
 if socket.gethostname() == 'zipbikes':
     DEBUG = True
-    TEMPLATES['TEMPLATE_DEBUG'] = True
+    TEMPLATES[0]['TEMPLATE_DEBUG'] = True
 
     # Absolute path to the directory static files should be collected to.
     # Don't put anything in this directory yourself; store your static files
