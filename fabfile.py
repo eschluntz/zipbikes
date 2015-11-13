@@ -16,7 +16,7 @@ def sync():
     run('cd /home/django/zipbikes/server/zipbikes; ./manage.py migrate')
 
 def reload():
-    run('service gunicorn restart')
+    sudo('service gunicorn restart')
 
 def deploy():
     pull()
