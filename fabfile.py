@@ -6,7 +6,7 @@ def ocean():
     env.user = 'django'
 
 def pull():
-    sudo('cd /home/django/zipbikes; git pull;') # runs the command on the remote environment 
+    run('cd /home/django/zipbikes; git pull;') # runs the command on the remote environment 
 
 def enter():
     run('cd /home/django/zipbikes/server/; source env/bin/activate;')
@@ -16,7 +16,7 @@ def sync():
     run('cd /home/django/zipbikes/server/zipbikes; ./manage.py migrate')
 
 def reload():
-    sudo('service gunicorn restart')
+    run('service gunicorn restart')
 
 def deploy():
     pull()
