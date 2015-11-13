@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        'TEMPLATE_DEBUG': True,
         },
     },
 ]
@@ -106,7 +107,7 @@ STATIC_URL = '/static/'
 # production settings ####################################
 if socket.gethostname() == 'zipbikes':
     DEBUG = True
-    TEMPLATE_DEBUG = True
+    TEMPLATES['TEMPLATE_DEBUG'] = True
 
     # Absolute path to the directory static files should be collected to.
     # Don't put anything in this directory yourself; store your static files
