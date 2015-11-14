@@ -8,7 +8,7 @@ def ocean():
 
 
 def pull():
-    run('cd /home/django/zipbikes; git pull;') # runs the command on the remote environment 
+    run('cd /home/django/zipbikes; git fetch --all; git checkout --force') # runs the command on the remote environment 
 
 def enter():
     run('cd /home/django/zipbikes/server/; source env/bin/activate;')
