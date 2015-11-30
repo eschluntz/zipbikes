@@ -21,6 +21,7 @@ def map(request):
     for avail in avails:
         bike = avail.bike
         bikes.append({
+            'id': bike.id,
             'lat': bike.lat,
             'lon': bike.lon,
             'price': bike.price,
@@ -94,6 +95,8 @@ def lock(request):
     data = request.POST
     user_id = data['user_id']
     bike_id = data['bike_id']
+    lat = data['lat']
+    lon = data['lon']
     now = datetime.datetime.now()
 
     # getting rental object
@@ -114,6 +117,8 @@ def lock(request):
     # updating bike status
     bike = Bike.objects.get(id=bike_id)
     bike.status = 'A'
+    bike.lat = lat
+    bike.lon = lon
     bike.save()
 
     # closing rental
