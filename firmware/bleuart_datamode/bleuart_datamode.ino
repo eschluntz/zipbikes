@@ -24,10 +24,15 @@
 
 #include "BluefruitConfig.h"
 
-#include <Servo.h>
-Servo myservo;  // create servo object to control a servo
+
 #define locked 0
 #define unlocked 90
+#define MAXL 50
+
+#include <Servo.h>
+Servo myservo;  // create servo object to control a servo
+char attempt[MAXL];
+int index;
 
 /*=========================================================================
     APPLICATION SETTINGS
@@ -162,6 +167,8 @@ void setup(void)
   // set up servo and other stuff
   myservo.attach(6);  // attaches the servo on pin 9 to the servo object
   myservo.write(locked);
+
+  index = 0;
 }
 
 /**************************************************************************/
@@ -169,6 +176,20 @@ void setup(void)
     @brief  Constantly poll for new command or response data
 */
 /**************************************************************************/
+
+// take action on full password. state is in globals
+void check_password() {
+  Serial.println("received line:");
+  Serial.println(attempt);
+
+  if (strcmp(attempt,"open")) {
+    myservo.write(unlocked);
+  }
+  else if (strcmp(attempt,"close")) {
+    myservo.write(locked);
+  }
+}
+
 void loop(void)
 {
   // Check for user input
@@ -185,13 +206,36 @@ void loop(void)
     // Send input data to host via Bluefruit
     ble.print(inputs);
   }
-
+  
   // Echo received data
   while ( ble.available() )
   {
+
     int c = ble.read();
 
-    Serial.print((char)c);
+    // end of our password
+    if ((char)c == '\n') {
+      attempt[index] = '\0';
+      check_password();
+      index = 0;
+    }
+    else {
+      // another char
+      attempt[index] = (char)c;
+      index++;
+    }
+    
+    /*
+    while ((char)c != '\n' && i < MAXL) {
+      attempt[i] = (char)c;
+      i++;
+      c = ble.read();
+    }
+    attempt[i] = '\0';
+
+    Serial.print("word:");
+    Serial.print(attempt);
+    
 
     if ((char)c == 'o') {
       myservo.write(unlocked);
@@ -199,6 +243,14 @@ void loop(void)
     else if ((char)c == 'l') {
       myservo.write(locked);
     }
+    else if ((char)c != '\n') {
+      Serial.print("not line");
+    }
+    else if ((char)c == '\0') {
+      Serial.print("end line");
+    }
+    */
+    
     /*
     // Hex output too, helps w/debugging!
     Serial.print(" [0x");
