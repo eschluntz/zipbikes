@@ -16,8 +16,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +38,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
@@ -53,7 +51,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //        mapView.addAnnotation(b1)
         
         let b2 = Bike(title: "Bike 2", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude - 0.008, longitude: location!.coordinate.longitude - 0.015), info: infoStr, price: price, rating: rating)
-        mapView.addAnnotations([b1, b2])
+        
+        let b3 = Bike(title: "Bike 3", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude - 0.002, longitude: location!.coordinate.longitude + 0.0015), info: infoStr, price: price, rating: rating)
+        
+        mapView.addAnnotations([b1, b2, b3])
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -78,18 +79,50 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         return nil
     }
-    
+
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         let capital = view.annotation as! Bike
         let placeName = capital.title
         let placeInfo = capital.info
+        let bikeCoords = capital.coordinate
         
-        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
+//        ac.addAction(UIAlertAction(title: "Reserve Bicycle", style: .Default, handler: nil))
+//        presentViewController(ac, animated: true, completion: nil)
+        
+        let ac = UIAlertController(title: "Reserve a Bike", message: placeInfo, preferredStyle: .Alert)
+        let act = UIAlertAction(title: "Reserve", style: UIAlertActionStyle.Default, handler: unlockMenu)
+        ac.addAction(act)
+        ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
+        
+        
     }
     
+    func unlockMenu(alert: UIAlertAction!){
+        let ac2 = UIAlertController(title: "UNLOCK", message: "Please make sure you are near the bicycle before unlocking", preferredStyle: .ActionSheet)
+        ac2.addAction(UIAlertAction(title: "Unlock", style: UIAlertActionStyle.Default, handler: unlockHandler))
+        presentViewController(ac2, animated: true, completion: nil)
+    }
+    
+    func unlockHandler(alert: UIAlertAction){
+        
+        //TODO Implement the Logic to communicate with the server and the lock to unlock the bike!
+        
+        //let location = locations.last
+        //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        
+//        let newCoord = CLLocationCoordinate2D(latitude: 39.2014, longitude: 41.0142)
+//        var region = MKCoordinateRegion(center: newCoord, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//        region = mapView.regionThatFits(region)
+//        self.mapView.setRegion(region, animated: true)
+        
+        let ac3 = UIAlertController(title: "Thank you!", message: "Remember to lock your bike when you are done with your rental", preferredStyle: .Alert)
+        ac3.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.Default, handler: nil))
+        presentViewController(ac3, animated: true, completion: nil)
+        
+    }
     
 }
 
