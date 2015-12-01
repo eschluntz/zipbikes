@@ -13,4 +13,4 @@ code = int(t)
 for c in secret:
 	code = ((code << int(5))% ul_max + code + ord(c))% ul_max
 
-print code
+print str(code)

@@ -176,7 +176,7 @@ void setup(void)
   index = 0;
 
   // clock
-  setTime(1448938993);
+  setTime(1448940866);
   
 }
 
@@ -194,38 +194,37 @@ unsigned long round_time() {
 }
 
 // hash based on our secret and current time
-unsigned long get_password() {
+void get_password(char * pass) {
 
   // start with time as hash
   unsigned long hash = round_time();
 
-  Serial.println(hash);
   for (int i = 0; i < secret_len; i++) {
     hash = ((hash << 5) + hash) + secret[i];
-    Serial.println(hash);
+    
   }
-  Serial.println("--");
-
-  return hash;
+  sprintf(pass, "%lu", hash);
 }
 
 // take action on full password. state is in globals
 void check_password() {
   Serial.println("received line:");
+
+  char password[50];
+  get_password(password);
+  
   Serial.println(attempt);
-
-  // close lock
-  if (strcmp(attempt,"close")) {
-    myservo.write(locked);
-  }
-
-  unsigned long long_attempt = bytes_to_long(attempt);
-  unsigned long password = get_password();
-  Serial.println(long_attempt);
   Serial.println(password);
   
+  // close lock
+  if (0 == strcmp(attempt,"close")) {
+    Serial.println("Closing!");
+    myservo.write(locked);
+  }
+  
   // generate our password
-  if (long_attempt == password) {
+  if (0 == strcmp(attempt,password)) {
+    Serial.println("Opening!");
     myservo.write(unlocked);
   }
 }
@@ -258,45 +257,12 @@ void loop(void)
       attempt[index] = '\0';
       check_password();
       index = 0;
+      memset(attempt, 0, sizeof(attempt));
     }
     else {
       // another char
       attempt[index] = (char)c;
       index++;
     }
-    
-    /*
-    while ((char)c != '\n' && i < MAXL) {
-      attempt[i] = (char)c;
-      i++;
-      c = ble.read();
-    }
-    attempt[i] = '\0';
-
-    Serial.print("word:");
-    Serial.print(attempt);
-    
-
-    if ((char)c == 'o') {
-      myservo.write(unlocked);
-    }
-    else if ((char)c == 'l') {
-      myservo.write(locked);
-    }
-    else if ((char)c != '\n') {
-      Serial.print("not line");
-    }
-    else if ((char)c == '\0') {
-      Serial.print("end line");
-    }
-    */
-    
-    /*
-    // Hex output too, helps w/debugging!
-    Serial.print(" [0x");
-    if (c <= 0xF) Serial.print(F("0"));
-    Serial.print(c, HEX);
-    Serial.print("] ");
-    */
   }
 }

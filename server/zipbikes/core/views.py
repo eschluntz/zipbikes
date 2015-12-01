@@ -161,4 +161,4 @@ def generate_key(bike):
     for c in secret:
         code = ((code << int(5))% ul_max + code + ord(c))% ul_max
 
-    return code
+    return str(code)
