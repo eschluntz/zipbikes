@@ -25,6 +25,8 @@
 #include "BluefruitConfig.h"
 
 
+#include <Time.h>
+
 #define locked 0
 #define unlocked 90
 #define MAXL 50
@@ -33,6 +35,8 @@
 Servo myservo;  // create servo object to control a servo
 char attempt[MAXL];
 int index;
+char secret[] = "super_secret_password";
+int secret_len = 21;
 
 /*=========================================================================
     APPLICATION SETTINGS
@@ -168,7 +172,12 @@ void setup(void)
   myservo.attach(6);  // attaches the servo on pin 9 to the servo object
   myservo.write(locked);
 
+  // for word length
   index = 0;
+
+  // clock
+  setTime(1448938993);
+  
 }
 
 /**************************************************************************/
@@ -177,16 +186,47 @@ void setup(void)
 */
 /**************************************************************************/
 
+unsigned long round_time() {
+  int lump = 3000; // 300 = 5 min
+  time_t t = now();
+  unsigned long t2 = (t / lump) * lump;
+  return t2;
+}
+
+// hash based on our secret and current time
+unsigned long get_password() {
+
+  // start with time as hash
+  unsigned long hash = round_time();
+
+  Serial.println(hash);
+  for (int i = 0; i < secret_len; i++) {
+    hash = ((hash << 5) + hash) + secret[i];
+    Serial.println(hash);
+  }
+  Serial.println("--");
+
+  return hash;
+}
+
 // take action on full password. state is in globals
 void check_password() {
   Serial.println("received line:");
   Serial.println(attempt);
 
-  if (strcmp(attempt,"open")) {
-    myservo.write(unlocked);
-  }
-  else if (strcmp(attempt,"close")) {
+  // close lock
+  if (strcmp(attempt,"close")) {
     myservo.write(locked);
+  }
+
+  unsigned long long_attempt = bytes_to_long(attempt);
+  unsigned long password = get_password();
+  Serial.println(long_attempt);
+  Serial.println(password);
+  
+  // generate our password
+  if (long_attempt == password) {
+    myservo.write(unlocked);
   }
 }
 

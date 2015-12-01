@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
 import datetime
+import time
+from math import floor
 from .models import *
 
 # core APIs for the app
@@ -67,13 +69,13 @@ def unlock(request):
                     "success": False}
         return JsonResponse(response)
 
-    # TODO generate actual TOTP
-    key = generate_key(bike_id)
-
     # updating bike DB
     bike = Bike.objects.get(id=bike_id)
     bike.status = 'R'
     bike.save()
+
+    # generate key
+    key = generate_key(bike)
 
     # creating rental object
     rental = Rental(bike=bike, user_id=user_id, start=now)
@@ -126,8 +128,7 @@ def lock(request):
     rental.save()
 
     # giving key
-    key = generate_key(bike_id)
-    response = {"key": key,
+    response = {"key": "close",
                 "success": True}
     return JsonResponse(response)
 
@@ -144,6 +145,20 @@ def is_valid_rental(user_id, bike_id):
 
     return len(avails) > 0
 
-def generate_key(bike_id):
+def generate_key(bike):
     """Generate a TOTP"""
-    return "42"
+
+    lump = 3000;
+
+    secret = bike.secret
+
+    t = floor(time.time() / lump) * lump
+
+    ul_max = 2**32
+
+    # start off hash with time
+    code = int(t)
+    for c in secret:
+        code = ((code << int(5))% ul_max + code + ord(c))% ul_max
+
+    return code
