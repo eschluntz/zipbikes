@@ -176,7 +176,7 @@ void setup(void)
   index = 0;
 
   // clock
-  setTime(1448940866);
+  setTime(1449034217);
   
 }
 
@@ -187,7 +187,7 @@ void setup(void)
 /**************************************************************************/
 
 unsigned long round_time() {
-  int lump = 30; // 300 = 5 min
+  int lump = 3000; // 300 = 5 min
   time_t t = now();
   unsigned long t2 = (t / lump) * lump;
   return t2;

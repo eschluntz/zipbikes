@@ -148,7 +148,7 @@ def is_valid_rental(user_id, bike_id):
 def generate_key(bike):
     """Generate a TOTP"""
 
-    lump = 30;
+    lump = 3000;
 
     secret = bike.secret
 
