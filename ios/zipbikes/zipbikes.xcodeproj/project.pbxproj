@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49BE6F9C1C0E728000EF1C1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BE6F9B1C0E728000EF1C1C /* API.swift */; };
 		80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */; };
 		80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4631BF2DC23009B39E4 /* ViewController.swift */; };
 		80CBA4671BF2DC23009B39E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80CBA4651BF2DC23009B39E4 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49BE6F9B1C0E728000EF1C1C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		80CBA45E1BF2DC23009B39E4 /* zipbikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zipbikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80CBA4631BF2DC23009B39E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		496086171C0E705500CAAB68 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80CBA48F1BF2DCAF009B39E4 /* Bike.swift */,
+				49BE6F9B1C0E728000EF1C1C /* API.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		80CBA4551BF2DC23009B39E4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +110,9 @@
 		80CBA4601BF2DC23009B39E4 /* zipbikes */ = {
 			isa = PBXGroup;
 			children = (
+				496086171C0E705500CAAB68 /* Models */,
 				80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */,
 				80CBA4631BF2DC23009B39E4 /* ViewController.swift */,
-				80CBA48F1BF2DCAF009B39E4 /* Bike.swift */,
 				80CBA4651BF2DC23009B39E4 /* Main.storyboard */,
 				80CBA4681BF2DC23009B39E4 /* Assets.xcassets */,
 				80CBA46A1BF2DC23009B39E4 /* LaunchScreen.storyboard */,
@@ -261,6 +272,7 @@
 			files = (
 				80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */,
 				80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */,
+				49BE6F9C1C0E728000EF1C1C /* API.swift in Sources */,
 				80CBA4901BF2DCAF009B39E4 /* Bike.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +498,7 @@
 				80CBA4881BF2DC23009B39E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80CBA4891BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +507,7 @@
 				80CBA48B1BF2DC23009B39E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80CBA48C1BF2DC23009B39E4 /* Build configuration list for PBXNativeTarget "zipbikesUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +516,7 @@
 				80CBA48E1BF2DC23009B39E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
