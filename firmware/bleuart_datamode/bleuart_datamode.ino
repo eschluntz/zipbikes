@@ -24,10 +24,19 @@
 
 #include "BluefruitConfig.h"
 
-#include <Servo.h>
-Servo myservo;  // create servo object to control a servo
+
+#include <Time.h>
+
 #define locked 0
 #define unlocked 90
+#define MAXL 50
+
+#include <Servo.h>
+Servo myservo;  // create servo object to control a servo
+char attempt[MAXL];
+int index;
+char secret[] = "super_secret_password";
+int secret_len = 21;
 
 /*=========================================================================
     APPLICATION SETTINGS
@@ -162,6 +171,13 @@ void setup(void)
   // set up servo and other stuff
   myservo.attach(6);  // attaches the servo on pin 9 to the servo object
   myservo.write(locked);
+
+  // for word length
+  index = 0;
+
+  // clock
+  setTime(1448940866);
+  
 }
 
 /**************************************************************************/
@@ -169,6 +185,50 @@ void setup(void)
     @brief  Constantly poll for new command or response data
 */
 /**************************************************************************/
+
+unsigned long round_time() {
+  int lump = 30; // 300 = 5 min
+  time_t t = now();
+  unsigned long t2 = (t / lump) * lump;
+  return t2;
+}
+
+// hash based on our secret and current time
+void get_password(char * pass) {
+
+  // start with time as hash
+  unsigned long hash = round_time();
+
+  for (int i = 0; i < secret_len; i++) {
+    hash = ((hash << 5) + hash) + secret[i];
+    
+  }
+  sprintf(pass, "%lu", hash);
+}
+
+// take action on full password. state is in globals
+void check_password() {
+  Serial.println("received line:");
+
+  char password[50];
+  get_password(password);
+  
+  Serial.println(attempt);
+  Serial.println(password);
+  
+  // close lock
+  if (0 == strcmp(attempt,"close")) {
+    Serial.println("Closing!");
+    myservo.write(locked);
+  }
+  
+  // generate our password
+  if (0 == strcmp(attempt,password)) {
+    Serial.println("Opening!");
+    myservo.write(unlocked);
+  }
+}
+
 void loop(void)
 {
   // Check for user input
@@ -185,26 +245,24 @@ void loop(void)
     // Send input data to host via Bluefruit
     ble.print(inputs);
   }
-
+  
   // Echo received data
   while ( ble.available() )
   {
+
     int c = ble.read();
 
-    Serial.print((char)c);
-
-    if ((char)c == 'o') {
-      myservo.write(unlocked);
+    // end of our password
+    if ((char)c == '\n') {
+      attempt[index] = '\0';
+      check_password();
+      index = 0;
+      memset(attempt, 0, sizeof(attempt));
     }
-    else if ((char)c == 'l') {
-      myservo.write(locked);
+    else {
+      // another char
+      attempt[index] = (char)c;
+      index++;
     }
-    /*
-    // Hex output too, helps w/debugging!
-    Serial.print(" [0x");
-    if (c <= 0xF) Serial.print(F("0"));
-    Serial.print(c, HEX);
-    Serial.print("] ");
-    */
   }
 }
