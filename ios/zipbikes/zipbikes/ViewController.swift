@@ -26,6 +26,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.showsUserLocation = true
         mapView.delegate = self
         
+        btDiscoverySharedInstance
         
     }
     
@@ -94,22 +95,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 //        presentViewController(ac, animated: true, completion: nil)
         
         
-        func unlockHandler(alert: UIAlertAction){
-            //
-            //TODO Implement the Logic to communicate with the server and the lock to unlock the bike!
-            //
-            
-            //let location = locations.last
-            //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-            
-            //let newCoord = CLLocationCoordinate2D(latitude: 39.2014, longitude: 41.0142)
-
-            
-            let ac3 = UIAlertController(title: "Thank you!", message: "Remember to lock your bike when you are done with your rental", preferredStyle: .Alert)
-            ac3.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.Default, handler: nil))
-            presentViewController(ac3, animated: true, completion: nil)
-            
-        }
+//        func unlockHandler(alert: UIAlertAction){
+//            //
+//            //TODO Implement the Logic to communicate with the server and the lock to unlock the bike!
+//            //
+//            
+//            //let location = locations.last
+//            //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+//            
+//            //let newCoord = CLLocationCoordinate2D(latitude: 39.2014, longitude: 41.0142)
+//            
+//        }
         
         func unlockMenu(alert: UIAlertAction!){
             
@@ -118,7 +114,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.mapView.setRegion(region, animated: true)
             
             let ac2 = UIAlertController(title: "UNLOCK", message: "Please make sure you are near the bicycle before unlocking", preferredStyle: .ActionSheet)
-            ac2.addAction(UIAlertAction(title: "Unlock", style: UIAlertActionStyle.Default, handler: unlockHandler))
+            ac2.addAction(UIAlertAction(title: "Unlock", style: UIAlertActionStyle.Default, handler: sendPassword))
             presentViewController(ac2, animated: true, completion: nil)
             
             
@@ -132,6 +128,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
         
+        
+        func sendPassword(alert: UIAlertAction) {
+            // Valid position range: 0 to 180
+            
+
+            
+            // Validate value
+
+            // Send position to BLE Shield (if service exists and is connected)
+            if let bleService = btDiscoverySharedInstance.bleService {
+                bleService.writePassword("Hello Erik \n")
+                
+
+            }
+            
+            let ac3 = UIAlertController(title: "Thank you!", message: "Remember to lock your bike when you are done with your rental", preferredStyle: .Alert)
+            ac3.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.Default, handler: nil))
+            presentViewController(ac3, animated: true, completion: nil)
+            
+        }
         
 
         

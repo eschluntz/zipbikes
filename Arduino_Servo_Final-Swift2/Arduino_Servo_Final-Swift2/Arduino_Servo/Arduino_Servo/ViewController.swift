@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     // Start the Bluetooth discovery process
     btDiscoverySharedInstance
-	}
+    }
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: BLEServiceChangedStatusNotification, object: nil)
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         timerTXDelay = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("timerTXDelayElapsed"), userInfo: nil, repeats: false)
       }
     }
-  }
+    }
   
   func timerTXDelayElapsed() {
     self.allowTX = true

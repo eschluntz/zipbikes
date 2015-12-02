@@ -1,4 +1,4 @@
-//
+// // The following code is from a tutorial on Arduino to IOS Bluetooth Communication.
 //  BTDiscovery.swift
 //  Arduino_Servo
 //

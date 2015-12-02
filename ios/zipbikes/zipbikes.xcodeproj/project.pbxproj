@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80B6D5311C0E926600E731FA /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B6D52F1C0E926600E731FA /* BTDiscovery.swift */; };
+		80B6D5321C0E926600E731FA /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B6D5301C0E926600E731FA /* BTService.swift */; };
 		80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */; };
 		80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CBA4631BF2DC23009B39E4 /* ViewController.swift */; };
 		80CBA4671BF2DC23009B39E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80CBA4651BF2DC23009B39E4 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		80B6D52F1C0E926600E731FA /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTDiscovery.swift; path = "../../../Arduino_Servo_Final-Swift2/Arduino_Servo_Final-Swift2/Arduino_Servo/Arduino_Servo/Classes/BTDiscovery.swift"; sourceTree = "<group>"; };
+		80B6D5301C0E926600E731FA /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTService.swift; path = "../../../Arduino_Servo_Final-Swift2/Arduino_Servo_Final-Swift2/Arduino_Servo/Arduino_Servo/Classes/BTService.swift"; sourceTree = "<group>"; };
 		80CBA45E1BF2DC23009B39E4 /* zipbikes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zipbikes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80CBA4631BF2DC23009B39E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80B6D52E1C0E924200E731FA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				80B6D52F1C0E926600E731FA /* BTDiscovery.swift */,
+				80B6D5301C0E926600E731FA /* BTService.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		80CBA4551BF2DC23009B39E4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +112,7 @@
 		80CBA4601BF2DC23009B39E4 /* zipbikes */ = {
 			isa = PBXGroup;
 			children = (
+				80B6D52E1C0E924200E731FA /* Classes */,
 				80CBA4611BF2DC23009B39E4 /* AppDelegate.swift */,
 				80CBA4631BF2DC23009B39E4 /* ViewController.swift */,
 				80CBA48F1BF2DCAF009B39E4 /* Bike.swift */,
@@ -262,6 +276,8 @@
 			files = (
 				80CBA4641BF2DC23009B39E4 /* ViewController.swift in Sources */,
 				80CBA4621BF2DC23009B39E4 /* AppDelegate.swift in Sources */,
+				80B6D5321C0E926600E731FA /* BTService.swift in Sources */,
+				80B6D5311C0E926600E731FA /* BTDiscovery.swift in Sources */,
 				80CBA4901BF2DCAF009B39E4 /* Bike.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
