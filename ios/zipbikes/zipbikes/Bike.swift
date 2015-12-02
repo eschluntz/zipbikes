@@ -14,15 +14,29 @@ class Bike: NSObject, MKAnnotation{
     
     var title: String?
     var coordinate: CLLocationCoordinate2D
-    var info: String
     var price: Float
-    var rating: Int
+    var rating: Float
     
-    init(title:String, coordinate: CLLocationCoordinate2D, info:String, price: Float, rating:Int){
+    init(title:String, coordinate: CLLocationCoordinate2D, price: Float, rating: Float){
         self.title = title
         self.coordinate = coordinate
-        self.info = info
         self.price = price
         self.rating = rating
+    }
+    
+    func ratingString() -> String {
+        return "Rating: " + String(self.rating) + " out of 5"
+    }
+    func priceString() -> String {
+        return "Price per day: $" + String(self.price)
+    }
+    func propertiesString() -> String {
+        var propertiesString = self.ratingString() + "\n"
+        propertiesString += self.priceString() + "\n"
+        return propertiesString
+    }
+    
+    func infoString() -> String {
+        return self.title! + "\n" + self.propertiesString()
     }
 }

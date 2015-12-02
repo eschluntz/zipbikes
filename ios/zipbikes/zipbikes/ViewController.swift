@@ -19,8 +19,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var api = API()
-        api.getBikes()
+        let api = API(controller: self)
         
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -29,7 +28,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.showsUserLocation = true
         mapView.delegate = self
         
-        
+        api.getBikes()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,19 +44,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
-        
-        let price = 2.50 as Float
-        let rating = 4
-        var infoStr = "Bike 1" + "\n" + "Rating : " + String(rating) + " out of 5" + "\n" + "Price per day $" + String(price)
-        
-        let b1 = Bike(title: "Bike 1", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude + 0.005, longitude: location!.coordinate.longitude+0.01), info: infoStr, price: price, rating: rating )
-        //        mapView.addAnnotation(b1)
-        
-        let b2 = Bike(title: "Bike 2", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude - 0.008, longitude: location!.coordinate.longitude - 0.015), info: infoStr, price: price, rating: rating)
-        
-        let b3 = Bike(title: "Bike 3", coordinate: CLLocationCoordinate2D(latitude: location!.coordinate.latitude - 0.002, longitude: location!.coordinate.longitude + 0.0015), info: infoStr, price: price, rating: rating)
-        
-        mapView.addAnnotations([b1, b2, b3])
+    }
+    
+    func refreshBikes(bikes: [Bike]) {
+        print("refreshing bikes")
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(bikes)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -86,16 +78,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
         let capital = view.annotation as! Bike
-        let placeName = capital.title
-        let placeInfo = capital.info
+        let placeName = capital.title as String!
+        let placeInfo = capital.propertiesString()
         //let bikeCoords = capital.coordinate as! String
         let bikeLat = String(capital.coordinate.latitude)
         let bikeLong = String(capital.coordinate.longitude)
-        
-//        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
-//        ac.addAction(UIAlertAction(title: "Reserve Bicycle", style: .Default, handler: nil))
-//        presentViewController(ac, animated: true, completion: nil)
-        
         
         func unlockHandler(alert: UIAlertAction){
             //
@@ -115,34 +102,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         func unlockMenu(alert: UIAlertAction!){
-            
             var region = MKCoordinateRegion(center: capital.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015))
             region = mapView.regionThatFits(region)
             self.mapView.setRegion(region, animated: true)
             
-            let ac2 = UIAlertController(title: "UNLOCK", message: "Please make sure you are near the bicycle before unlocking", preferredStyle: .ActionSheet)
+            let ac2 = UIAlertController(title: "Unlock " + placeName, message: "You must be near the bike to unlock it.", preferredStyle: .ActionSheet)
             ac2.addAction(UIAlertAction(title: "Unlock", style: UIAlertActionStyle.Default, handler: unlockHandler))
             presentViewController(ac2, animated: true, completion: nil)
-            
-            
-            
         }
         
-        
-        let ac = UIAlertController(title: "Reserve a Bike", message: placeInfo, preferredStyle: .Alert)
+        let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .Alert)
         let act = UIAlertAction(title: "Reserve", style: UIAlertActionStyle.Default, handler: unlockMenu)
         ac.addAction(act)
         ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
-        
-        
-
-        
     }
-    
-
-    
-
-    
 }
 
