@@ -41,8 +41,10 @@ class API {
                     let lat = (bikejson["lat"] as! NSNumber).doubleValue
                     let lon = (bikejson["lon"] as! NSNumber).doubleValue
                     
-                    let bike = Bike(id: (bikejson["id"] as! NSNumber).integerValue,
-                        title: "Bike " + String(i),
+                    let id = (bikejson["id"] as! NSNumber).integerValue
+                    
+                    let bike = Bike(id: id,
+                        title: "Bike " + String(id),
                         coordinate: CLLocationCoordinate2D(latitude: lat as CLLocationDegrees,
                             longitude: lon as CLLocationDegrees),
                         price: bikejson["price"] as! Float,
@@ -78,6 +80,9 @@ class API {
         let dataTask = session.dataTaskWithRequest(request) {
             (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            print("unlock json: ")
+            print(json)
+            print("\n\n\n")
             
             if let success = json["success"] as? Bool {
                 if success {
@@ -97,5 +102,45 @@ class API {
         }
         dataTask.resume()
     }
-
+    
+    func doLock(userId: Int, bikeID: Int, lat: Double, lon: Double)-> Void {
+        let url = NSURL(string: "http://zipbikes.co/core/lock/")!
+        
+        let postString: NSString = "user_id=\(userId)&bike_id=\(bikeID)&lat=\(lat)&lon=\(lon)"
+        let postData: NSData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postLength: NSString = String(postData.length)
+        NSLog("PostData: %@", postString);
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let dataTask = session.dataTaskWithRequest(request) {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            print("lock json: ")
+            print(json)
+            print("\n\n\n")
+            
+            if let success = json["success"] as? Bool {
+                if success {
+                    let key = json["key"] as! NSString
+                    // TODO successful lock handler
+                    // self.mapController.lockSuccess(bikeID)
+                    
+                } else {
+                    let error = json["error"] as! NSString
+                    print(error)
+                    // TODO error handling: uncomment below once it's implemented
+                    // self.mapController.lockBikeError(bikeID, error)
+                }
+            } else {
+                print("no \"success\" field in response from server")
+            }
+        }
+        dataTask.resume()
+    }
 }

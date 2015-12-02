@@ -31,8 +31,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.delegate = self
         
         api.getBikes()
-        api.getUnlockKey(self.USER_ID, bikeID: 1)
-        api.getUnlockKey(self.USER_ID, bikeID: 2)
+    
+        //api.getUnlockKey(self.USER_ID, bikeID: 2)
+        //api.getUnlockKey(self.USER_ID, bikeID: 1)
+        //api.doLock(self.USER_ID, bikeID: 2, lat: 40.71, lon: 74.00)
+        //api.doLock(self.USER_ID, bikeID: 1, lat: 41.71, lon: 74.00)
 
         btDiscoverySharedInstance
     }
