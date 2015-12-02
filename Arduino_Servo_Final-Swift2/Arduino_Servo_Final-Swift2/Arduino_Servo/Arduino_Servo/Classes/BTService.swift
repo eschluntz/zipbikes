@@ -1,4 +1,4 @@
-//
+// The following code is from a tutorial on Arduino to IOS Bluetooth Communication. 
 //  BTService.swift
 //  Arduino_Servo
 //
@@ -10,8 +10,8 @@ import Foundation
 import CoreBluetooth
 
 /* Services & Characteristics UUIDs */
-let BLEServiceUUID = CBUUID(string: "025A7775-49AA-42BD-BBDB-E2AE77782966")
-let PositionCharUUID = CBUUID(string: "F38A2C23-BC54-40FC-BED0-60EDDA139F47")
+let BLEServiceUUID = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
+let PositionCharUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
 let BLEServiceChangedStatusNotification = "kBLEServiceChangedStatusNotification"
 
 class BTService: NSObject, CBPeripheralDelegate {
@@ -93,13 +93,13 @@ class BTService: NSObject, CBPeripheralDelegate {
   
   // Mark: - Private
   
-  func writePosition(position: UInt8) {
+  func writePassword(position: String) {
     // See if characteristic has been discovered before writing to it
     if let positionCharacteristic = self.positionCharacteristic {
       // Need a mutable var to pass to writeValue function
-      var positionValue = position
-      let data = NSData(bytes: &positionValue, length: sizeof(UInt8))
-      self.peripheral?.writeValue(data, forCharacteristic: positionCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+      //let data = NSData(bytes: &positionValue, length: sizeof(UInt8))
+      let data = position.dataUsingEncoding(NSUTF8StringEncoding)
+      self.peripheral?.writeValue(data!, forCharacteristic: positionCharacteristic, type: CBCharacteristicWriteType.WithResponse)
     }
   }
   

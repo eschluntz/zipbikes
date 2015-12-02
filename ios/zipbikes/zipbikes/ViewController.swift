@@ -34,6 +34,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         api.getUnlockKey(self.USER_ID, bikeID: 1)
         api.getUnlockKey(self.USER_ID, bikeID: 2)
 
+        btDiscoverySharedInstance
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,6 +121,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         ac.addAction(act)
         ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         presentViewController(ac, animated: true, completion: nil)
+
+        func sendPassword(alert: UIAlertAction) {
+            // Valid position range: 0 to 180
+            
+
+            
+            // Validate value
+
+            // Send position to BLE Shield (if service exists and is connected)
+            if let bleService = btDiscoverySharedInstance.bleService {
+                bleService.writePassword("Hello Erik \n")
+                
+
+            }
+            
+            let ac3 = UIAlertController(title: "Thank you!", message: "Remember to lock your bike when you are done with your rental", preferredStyle: .Alert)
+            ac3.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.Default, handler: nil))
+            presentViewController(ac3, animated: true, completion: nil)
+            
+        }
     }
 }
 
