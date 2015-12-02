@@ -17,21 +17,8 @@ class API {
         self.mapController = controller
     }
     
-    func getBikes()-> [Bike]? {
+    func getBikes()-> Void {
         let url = NSURL(string: "http://zipbikes.co/core/map/")!
-        
-        /*
-        let post:NSString = "username=\(username)&password=\(password)"
-        
-        NSLog("PostData: %@",post);
-        
-        let url:NSURL = NSURL(string:"https://dipinkrishna.com/jsonlogin2.php")!
-        
-        let postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        
-        let postLength:NSString = String( postData.length )*/
-        
-        
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -46,6 +33,7 @@ class API {
             var bikes = [Bike]()
             
             if let bikejsons = json["bikes"] as? NSArray {
+                print(bikejsons)
                 
                 for var i = 0; i < bikejsons.count; i++ {
                     let bikejson = bikejsons[i]
@@ -53,7 +41,8 @@ class API {
                     let lat = (bikejson["lat"] as! NSNumber).doubleValue
                     let lon = (bikejson["lon"] as! NSNumber).doubleValue
                     
-                    let bike = Bike(title: "Bike " + String(i),
+                    let bike = Bike(id: (bikejson["id"] as! NSNumber).integerValue,
+                        title: "Bike " + String(i),
                         coordinate: CLLocationCoordinate2D(latitude: lat as CLLocationDegrees,
                             longitude: lon as CLLocationDegrees),
                         price: bikejson["price"] as! Float,
@@ -68,7 +57,45 @@ class API {
             self.mapController.refreshBikes(bikes)
         }
         dataTask.resume()
-        
-        return nil
     }
+    
+    
+    func getUnlockKey(userId: Int, bikeID: Int)-> Void {
+        let url = NSURL(string: "http://zipbikes.co/core/unlock/")!
+        
+        let postString: NSString = "user_id=\(userId)&bike_id=\(bikeID)"
+        let postData: NSData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+        let postLength: NSString = String(postData.length)
+        NSLog("PostData: %@", postString);
+
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let dataTask = session.dataTaskWithRequest(request) {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            
+            if let success = json["success"] as? Bool {
+                if success {
+                    let key = json["key"] as! NSString
+                    // TODO unlock the bike using the key! uncomment below once implemented
+                    // self.mapController.unlockBikeWithKey(bikeID, key)
+
+                } else {
+                    let error = json["error"] as! NSString
+                    print(error)
+                    // TODO error handling: uncomment below once it's implemented
+                    // self.mapController.unlockBikeError(bikeID, error)
+                }
+            } else {
+                print("no \"success\" field in response from server")
+            }
+        }
+        dataTask.resume()
+    }
+
 }

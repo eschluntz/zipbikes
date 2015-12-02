@@ -16,12 +16,14 @@ class Bike: NSObject, MKAnnotation{
     var coordinate: CLLocationCoordinate2D
     var price: Float
     var rating: Float
+    var id: Int
     
-    init(title:String, coordinate: CLLocationCoordinate2D, price: Float, rating: Float){
+    init(id: Int, title: String, coordinate: CLLocationCoordinate2D, price: Float, rating: Float){
         self.title = title
         self.coordinate = coordinate
         self.price = price
         self.rating = rating
+        self.id = id
     }
     
     func ratingString() -> String {

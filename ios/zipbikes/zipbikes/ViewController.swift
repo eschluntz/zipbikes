@@ -16,6 +16,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     
+    let USER_ID = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.delegate = self
         
         api.getBikes()
+        api.getUnlockKey(self.USER_ID, bikeID: 1)
+        api.getUnlockKey(self.USER_ID, bikeID: 2)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,7 +85,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let capital = view.annotation as! Bike
         let placeName = capital.title as String!
         let placeInfo = capital.propertiesString()
-        //let bikeCoords = capital.coordinate as! String
         let bikeLat = String(capital.coordinate.latitude)
         let bikeLong = String(capital.coordinate.longitude)
         
@@ -95,7 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             //let newCoord = CLLocationCoordinate2D(latitude: 39.2014, longitude: 41.0142)
 
             
-            let ac3 = UIAlertController(title: "Thank you!", message: "Remember to lock your bike when you are done with your rental", preferredStyle: .Alert)
+            let ac3 = UIAlertController(title: "Thank You", message: "Remember to lock your bike when you are done with your rental!", preferredStyle: .Alert)
             ac3.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.Default, handler: nil))
             presentViewController(ac3, animated: true, completion: nil)
             
